@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/UAV_Viewer">
+        <file>Resources/doc.png</file>
+        <file>Resources/folder.png</file>
+        <file>Resources/image.png</file>
+        <file>Resources/sign.png</file>
+    </qresource>
+</RCC>
