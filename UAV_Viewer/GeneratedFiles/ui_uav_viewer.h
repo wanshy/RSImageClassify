@@ -37,7 +37,7 @@ public:
     QPushButton *pBtn_Select;
     QPushButton *pBtn_Prev;
     QPushButton *pBtn_Next;
-    QWidget *widget;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_2;
     QTreeWidget *tree_View;
     QLabel *lab_Image;
@@ -80,15 +80,15 @@ public:
 
         horizontalLayout->addWidget(pBtn_Next);
 
-        widget = new QWidget(centralWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(10, 40, 581, 302));
-        horizontalLayout_2 = new QHBoxLayout(widget);
+        layoutWidget1 = new QWidget(centralWidget);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(10, 40, 581, 302));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        tree_View = new QTreeWidget(widget);
+        tree_View = new QTreeWidget(layoutWidget1);
         QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
         __qtreewidgetitem->setText(0, QStringLiteral("1"));
         tree_View->setHeaderItem(__qtreewidgetitem);
@@ -97,9 +97,9 @@ public:
 
         horizontalLayout_2->addWidget(tree_View);
 
-        lab_Image = new QLabel(widget);
+        lab_Image = new QLabel(layoutWidget1);
         lab_Image->setObjectName(QStringLiteral("lab_Image"));
-        lab_Image->setMinimumSize(QSize(160, 300));
+        lab_Image->setMinimumSize(QSize(400, 300));
         lab_Image->setMouseTracking(true);
         lab_Image->setAutoFillBackground(false);
 

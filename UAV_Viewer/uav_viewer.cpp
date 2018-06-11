@@ -14,6 +14,12 @@ UAV_Viewer::UAV_Viewer(QWidget *parent)
 	ui.tree_View->clear();
 	ui.tree_View->setHeaderHidden(true);
 
+	m_pMenuOfTree = new QMenu();
+	m_pMenuOfTree->addAction(QString::fromLocal8Bit("菜单子项1"), this, SLOT(slot_pBtnNextClicked()));
+	m_pMenuOfTree->addAction(QString::fromLocal8Bit("菜单子项2"), this, SLOT(slot_pBtnNextClicked()));
+	ui.tree_View->setContextMenuPolicy(Qt::CustomContextMenu);
+	connect(ui.tree_View, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(slot_ShowMenuofTree()));
+	//m_pMenuOfTree->popup(ui.tree_View->mapToGlobal(pos));
 }
 
 UAV_Viewer::~UAV_Viewer()
@@ -37,7 +43,7 @@ void UAV_Viewer::slot_pBtnPrevClicked()
 
 void UAV_Viewer::slot_pBtnNextClicked()
 {
-
+	return;
 }
 
 QFileInfoList UAV_Viewer::allfile(QTreeWidgetItem *root, QString path)         //参数为主函数中添加的item和路径名  
@@ -83,4 +89,18 @@ QFileInfoList UAV_Viewer::allfile(QTreeWidgetItem *root, QString path)         /
 		file_list.append(name);
 	}
 	return file_list;
+}
+
+void UAV_Viewer::slot_ShowMenuofTree()
+{
+// 	QMenu *menu = new QMenu(ui.tree_View);
+// 	QAction *addAction = new QAction("add", this);
+// 	QAction *delAction = new QAction("del", this);
+// 	QAction *modAction = new QAction("mod", this);
+// 
+// 	menu->addAction(addAction);
+// 	menu->addAction(delAction);
+// 	menu->addAction(modAction);
+
+	m_pMenuOfTree->exec(QCursor::pos());
 }

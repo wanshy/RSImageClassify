@@ -18,9 +18,10 @@ public slots:
 	void slot_pBtnSelectClicked();
 	void slot_pBtnPrevClicked();
 	void slot_pBtnNextClicked();
-
+	void slot_ShowMenuofTree();
 private:
 	Ui::UAV_ViewerClass ui;
+	QMenu* m_pMenuOfTree;
 };
 
 #endif // UAV_VIEWER_H
