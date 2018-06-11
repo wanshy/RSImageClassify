@@ -15,7 +15,6 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
@@ -24,6 +23,7 @@
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QWidget>
+#include "qtimagelabel.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -37,10 +37,8 @@ public:
     QPushButton *pBtn_Select;
     QPushButton *pBtn_Prev;
     QPushButton *pBtn_Next;
-    QWidget *layoutWidget1;
-    QHBoxLayout *horizontalLayout_2;
     QTreeWidget *tree_View;
-    QLabel *lab_Image;
+    QtImageLabel *qtImageLabel;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -80,31 +78,16 @@ public:
 
         horizontalLayout->addWidget(pBtn_Next);
 
-        layoutWidget1 = new QWidget(centralWidget);
-        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(10, 40, 581, 302));
-        horizontalLayout_2 = new QHBoxLayout(layoutWidget1);
-        horizontalLayout_2->setSpacing(6);
-        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        tree_View = new QTreeWidget(layoutWidget1);
+        tree_View = new QTreeWidget(centralWidget);
         QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
         __qtreewidgetitem->setText(0, QStringLiteral("1"));
         tree_View->setHeaderItem(__qtreewidgetitem);
         tree_View->setObjectName(QStringLiteral("tree_View"));
+        tree_View->setGeometry(QRect(11, 41, 173, 300));
         tree_View->setMinimumSize(QSize(160, 300));
-
-        horizontalLayout_2->addWidget(tree_View);
-
-        lab_Image = new QLabel(layoutWidget1);
-        lab_Image->setObjectName(QStringLiteral("lab_Image"));
-        lab_Image->setMinimumSize(QSize(400, 300));
-        lab_Image->setMouseTracking(true);
-        lab_Image->setAutoFillBackground(false);
-
-        horizontalLayout_2->addWidget(lab_Image);
-
+        qtImageLabel = new QtImageLabel(centralWidget);
+        qtImageLabel->setObjectName(QStringLiteral("qtImageLabel"));
+        qtImageLabel->setGeometry(QRect(230, 60, 281, 251));
         UAV_ViewerClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(UAV_ViewerClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -128,7 +111,6 @@ public:
         pBtn_Select->setText(QApplication::translate("UAV_ViewerClass", "Select", 0));
         pBtn_Prev->setText(QApplication::translate("UAV_ViewerClass", "<<", 0));
         pBtn_Next->setText(QApplication::translate("UAV_ViewerClass", ">>", 0));
-        lab_Image->setText(QApplication::translate("UAV_ViewerClass", "00", 0));
     } // retranslateUi
 
 };

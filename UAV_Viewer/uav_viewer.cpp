@@ -1,7 +1,7 @@
 #include "uav_viewer.h"
 #include <QFileDialog>
 #include <Qstring>
-
+#include <QImage>
 
 UAV_Viewer::UAV_Viewer(QWidget *parent)
 	: QMainWindow(parent)
@@ -19,6 +19,8 @@ UAV_Viewer::UAV_Viewer(QWidget *parent)
 	m_pMenuOfTree->addAction(QString::fromLocal8Bit("²Ëµ¥×ÓÏî2"), this, SLOT(slot_pBtnNextClicked()));
 	ui.tree_View->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(ui.tree_View, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(slot_ShowMenuofTree()));
+	QImage img; img.load("E:\\20180612001000.jpg");
+	ui.qtImageLabel->setImage(img);
 	//m_pMenuOfTree->popup(ui.tree_View->mapToGlobal(pos));
 }
 
