@@ -19,9 +19,11 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QTreeWidget>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 #include "qtimagelabel.h"
 
@@ -31,13 +33,16 @@ class Ui_UAV_ViewerClass
 {
 public:
     QWidget *centralWidget;
-    QWidget *layoutWidget;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QLineEdit *lineEdit;
     QPushButton *pBtn_Select;
     QPushButton *pBtn_Prev;
     QPushButton *pBtn_Next;
+    QHBoxLayout *horizontalLayout_2;
     QTreeWidget *tree_View;
+    QSpacerItem *horizontalSpacer;
     QtImageLabel *qtImageLabel;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
@@ -47,51 +52,73 @@ public:
     {
         if (UAV_ViewerClass->objectName().isEmpty())
             UAV_ViewerClass->setObjectName(QStringLiteral("UAV_ViewerClass"));
-        UAV_ViewerClass->resize(603, 408);
+        UAV_ViewerClass->resize(647, 405);
         centralWidget = new QWidget(UAV_ViewerClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        layoutWidget = new QWidget(centralWidget);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 10, 581, 25));
-        horizontalLayout = new QHBoxLayout(layoutWidget);
+        widget = new QWidget(centralWidget);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(10, 10, 626, 335));
+        verticalLayout = new QVBoxLayout(widget);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setSizeConstraint(QLayout::SetMaximumSize);
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
-        horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        lineEdit = new QLineEdit(layoutWidget);
+        lineEdit = new QLineEdit(widget);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
 
         horizontalLayout->addWidget(lineEdit);
 
-        pBtn_Select = new QPushButton(layoutWidget);
+        pBtn_Select = new QPushButton(widget);
         pBtn_Select->setObjectName(QStringLiteral("pBtn_Select"));
 
         horizontalLayout->addWidget(pBtn_Select);
 
-        pBtn_Prev = new QPushButton(layoutWidget);
+        pBtn_Prev = new QPushButton(widget);
         pBtn_Prev->setObjectName(QStringLiteral("pBtn_Prev"));
 
         horizontalLayout->addWidget(pBtn_Prev);
 
-        pBtn_Next = new QPushButton(layoutWidget);
+        pBtn_Next = new QPushButton(widget);
         pBtn_Next->setObjectName(QStringLiteral("pBtn_Next"));
 
         horizontalLayout->addWidget(pBtn_Next);
 
-        tree_View = new QTreeWidget(centralWidget);
+
+        verticalLayout->addLayout(horizontalLayout);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        tree_View = new QTreeWidget(widget);
         QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
         __qtreewidgetitem->setText(0, QStringLiteral("1"));
         tree_View->setHeaderItem(__qtreewidgetitem);
         tree_View->setObjectName(QStringLiteral("tree_View"));
-        tree_View->setGeometry(QRect(11, 41, 173, 300));
         tree_View->setMinimumSize(QSize(160, 300));
-        qtImageLabel = new QtImageLabel(centralWidget);
+        tree_View->setMaximumSize(QSize(170, 16777215));
+
+        horizontalLayout_2->addWidget(tree_View);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer);
+
+        qtImageLabel = new QtImageLabel(widget);
         qtImageLabel->setObjectName(QStringLiteral("qtImageLabel"));
-        qtImageLabel->setGeometry(QRect(230, 60, 281, 251));
+
+        horizontalLayout_2->addWidget(qtImageLabel);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
+
         UAV_ViewerClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(UAV_ViewerClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 603, 23));
+        menuBar->setGeometry(QRect(0, 0, 647, 23));
         UAV_ViewerClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(UAV_ViewerClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
